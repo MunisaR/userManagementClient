@@ -98,7 +98,7 @@ const Register = () => {
             <button
               onClick={async () => {
                 await axios
-                  .post("/create_user", {
+                  .post(baseUrl + "/create_user", {
                     name: name,
                     surname: surname,
                     email: email,
