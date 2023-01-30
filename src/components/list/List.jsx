@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import moment from "moment/moment.js";
 import axios from "axios";
-
+import { BASEURL } from "../../baseUrl";
 const users = [];
 
 const List = () => {
@@ -11,7 +11,7 @@ const List = () => {
 
   const fetchUsers = async () => {
     await axios
-      .get(baseUrl + "/users")
+      .get(BASEURL + "/users")
       .then((res) => setAllUsers(res.data))
       .catch((err) => console.log(err));
   };
@@ -68,7 +68,7 @@ const List = () => {
                     className="m-1 badge bg-info"
                     onClick={async () => {
                       await axios
-                        .post(baseUrl + "/block_user", {
+                        .post(BASEURL + "/block_user", {
                           id: user._id,
                           status: user.status,
                         })
@@ -87,7 +87,7 @@ const List = () => {
                     className="m-1 badge bg-warning"
                     onClick={async () => {
                       await axios
-                        .post(baseUrl + "/delete_user", {
+                        .post(BASEURL + "/delete_user", {
                           id: _id,
                         })
                         .then((response) => {
@@ -113,7 +113,7 @@ const List = () => {
             className="m-2 btn btn-danger"
             onClick={async () => {
               await axios
-                .post(baseUrl + "/delete_all_users")
+                .post(BASEURL + "/delete_all_users")
                 .then((response) => {
                   window.location.reload();
                 })
@@ -129,7 +129,7 @@ const List = () => {
             className="m-2 btn btn-warning"
             onClick={async () => {
               await axios
-                .post(baseUrl + "/delete_selected_users", { id: users })
+                .post(BASEURL + "/delete_selected_users", { id: users })
                 .then((response) => {
                   if (response.statusText == "OK") {
                     window.location.reload();

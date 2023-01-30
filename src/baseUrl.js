@@ -1,1 +1,1 @@
-export const baseUrl = "https://ill-teal-turtle-gear.cyclic.app";
+export const BASEURL = "https://ill-teal-turtle-gear.cyclic.app";

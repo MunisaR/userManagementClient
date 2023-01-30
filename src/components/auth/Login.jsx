@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { baseUrl } from "../../baseUrl";
+import { BASEURL } from "../../baseUrl";
 
 const Login = () => {
   const [status, setStatus] = useState(true);
@@ -10,7 +10,7 @@ const Login = () => {
 
   const fetchAllUsers = async () => {
     await axios
-      .get(baseUrl + "/users", {})
+      .get(BASEURL + "/users", {})
       .then((response) => {
         setStatus(response.data);
       })
@@ -69,14 +69,14 @@ const Login = () => {
             type="button"
             onClick={async () => {
               await axios
-                .post(baseUrl + "/login", {
+                .post(BASEURL + "/login", {
                   email,
                   password,
                 })
                 .then((response) => {
                   if (response.status == 200 || response.statusText == "OK") {
                     axios
-                      .post(baseUrl + "/login_time", { email })
+                      .post(BASEURL + "/login_time", { email })
                       .then((r) => {
                         console.log(r);
                       })

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import { BASEURL } from "../../baseUrl";
 const Register = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -98,7 +98,7 @@ const Register = () => {
             <button
               onClick={async () => {
                 await axios
-                  .post(baseUrl + "/create_user", {
+                  .post(BASEURL + "/create_user", {
                     name: name,
                     surname: surname,
                     email: email,
